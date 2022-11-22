@@ -4,14 +4,20 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints = {@UniqueConstraint(name="Unqiue_Combinations_of_privileges_constraint",columnNames = {"accessToWareHouse","accessToControlRoom","accessToKitchen","accessToManageMoney","accessToBuyStock"})} )
 public class Privilege_Entity {
 
 	@Id
+	@GeneratedValue
 	private int privilegeId;
 	
 	private boolean accessToWareHouse;
@@ -20,8 +26,7 @@ public class Privilege_Entity {
 	private boolean accessToManageMoney;
 	private boolean accessToBuyStock;
 
-	@ManyToMany(mappedBy = "privilegesforthisrole")
-	private List<Roles_Entity>listofroles;
+
 
 	public int getPrivilegeId() {
 		return privilegeId;
@@ -71,13 +76,7 @@ public class Privilege_Entity {
 		this.accessToBuyStock = accessToBuyStock;
 	}
 
-	public List<Roles_Entity> getListofroles() {
-		return listofroles;
-	}
-
-	public void setListofroles(List<Roles_Entity> listofroles) {
-		this.listofroles = listofroles;
-	}
+	
 
 	
 }

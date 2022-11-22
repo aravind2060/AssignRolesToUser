@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 
@@ -23,8 +24,8 @@ public class User_Entity {
 	private String firstName;
 	private String lastName;
 	private int age;
-	
-	@ManyToOne
+	/*Cascade is pending*/
+	@ManyToOne()
 	@JoinColumn(name="role_id")
 	private Roles_Entity roleOfUser;
 

@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService{
 	   User_Entity raw=userentityConverter.convertUserdtoToUserEntity(userSignInRequest);
 	  
 	   User_Entity response=userdao.userSignIn(raw);
-
+       System.out.println(response);
 	   return userentityConverter.convertUserEntityToUserDto(response);
 	}
  

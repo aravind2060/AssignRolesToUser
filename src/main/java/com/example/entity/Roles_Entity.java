@@ -2,33 +2,41 @@ package com.example.entity;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Roles_Entity {
 
 	@Id
+	@GeneratedValue
 	private int roleId;
 	
+	@Column(unique = true)
 	private String roleName;
 	
-//	@OneToMany(mappedBy = "roleOfUser")
-//	private List<User_Entity> userforthisrole;
-	
-	@ManyToMany
-	private List<Privilege_Entity> privilegesforthisrole;
+	@OneToOne
+	@JoinColumn(name = "privilegeId",nullable = false)
+	private Privilege_Entity privilegeId;
 
-	public List<Privilege_Entity> getPrivilegesforthisrole() {
-		return privilegesforthisrole;
+	public Privilege_Entity getPrivilegesforthisrole() {
+		
+		return privilegeId;
 	}
 
-	public void setPrivilegesforthisrole(List<Privilege_Entity> privilegesforthisrole) {
-		this.privilegesforthisrole = privilegesforthisrole;
+	public void setPrivilegesforthisrole(Privilege_Entity privilegeId) {
+		this.privilegeId = privilegeId;
 	}
 
 	public int getRoleId() {
@@ -47,19 +55,10 @@ public class Roles_Entity {
 		this.roleName = roleName;
 	}
 
-//	public List<User_Entity> getUserforthisrole() {
-//		return userforthisrole;
-//	}
-//
-//	public void setUserforthisrole(List<User_Entity> userforthisrole) {
-//		this.userforthisrole = userforthisrole;
-//	}
-
-	
-
-	
-
-	
+	@Override
+	public String toString() {
+		return "Roles_Entity [roleId=" + roleId + ", roleName=" + roleName + ", privilegeId=" + privilegeId + "]";
+	}
 	
     
 }

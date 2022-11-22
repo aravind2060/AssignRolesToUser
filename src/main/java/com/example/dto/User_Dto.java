@@ -3,7 +3,10 @@ package com.example.dto;
 
 
 import com.example.entity.Roles_Entity;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+@JsonInclude(Include.NON_NULL)
 public class User_Dto {
 
     private long id;
@@ -12,7 +15,7 @@ public class User_Dto {
 	private String firstName;
 	private String lastName;
 	private int age;
-	
+	//Json filter send only true responses
 	private Roles_Entity roleOfUser;
 
 	public long getId() {

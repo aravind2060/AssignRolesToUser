@@ -30,7 +30,7 @@ public class UserManagementController {
 			  return new ResponseEntity<Object>(""+e.getMessage(),HttpStatus.INTERNAL_SERVER_ERROR);
 		  }
 	 }
-	 @GetMapping(path="/signin")
+	 @PostMapping(path="/signin")
 	 public ResponseEntity<Object> userSignIn(@RequestBody User_Dto userSignInRequest){
 		 try {
 			 User_Dto res=userService.userSignIn(userSignInRequest);

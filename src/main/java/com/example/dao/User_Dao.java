@@ -12,6 +12,7 @@ import javax.transaction.Transactional;
 
 import org.hibernate.query.criteria.internal.CriteriaBuilderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.cassandra.CqlSessionBuilderCustomizer;
 import org.springframework.stereotype.Repository;
 
 import com.example.entity.User_Entity;
@@ -41,8 +42,8 @@ public class User_Dao {
      }
     public User_Entity userSignIn(User_Entity userSignInRequest) {
     	
-//    	StringBuilder query=new StringBuilder();
-//    	query.append("SELECT usr FROM User_Entity AS usr WHERE usr.email=\'"+userSignInRequest.getEmail()+"\'");
+         
+    	
     	
     	CriteriaBuilder cb=entityManager.getCriteriaBuilder();
     	CriteriaQuery<User_Entity> cq=cb.createQuery(User_Entity.class);
